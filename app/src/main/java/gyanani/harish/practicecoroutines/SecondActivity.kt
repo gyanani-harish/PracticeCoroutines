@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import gyanani.harish.practicecoroutines.Utils.appendAndLog
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.Date
 import java.util.concurrent.ExecutorService
@@ -16,7 +17,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val text1 = findViewById<TextView>(R.id.text1)
-        text1.append("Starting...\n")
+        text1.appendAndLog("Starting...\n")
         if (intent.getStringExtra("type") == "parallel") {
             Practice.parallelCalls(lifecycleScope, text1)
         } else if (intent.getStringExtra("type") == "serial") {
@@ -26,7 +27,7 @@ class SecondActivity : AppCompatActivity() {
             val customDispatcher = threadPool.asCoroutineDispatcher()
             Practice.parallelCallsButMaxConcurrent(lifecycleScope, customDispatcher, text1)
         }
-        text1.append("Ending...\n")
+        text1.appendAndLog("Ending...\n")
     }
 
     override fun onDestroy() {

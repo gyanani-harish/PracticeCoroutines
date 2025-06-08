@@ -3,6 +3,7 @@ package gyanani.harish.practicecoroutines
 import android.widget.TextView
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.lifecycleScope
+import gyanani.harish.practicecoroutines.Utils.appendAndLog
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -28,8 +29,8 @@ object Practice {
             }
             results.add("Current Thread after withContext(io) is ${Thread.currentThread().name}\n Totaltime=${(Date().time - startTime)}")
             results.forEach {
-                text1.append(it)
-                text1.append("\n\n")
+                text1.appendAndLog(it)
+                text1.appendAndLog("\n\n")
             }
         }
     }
@@ -43,29 +44,29 @@ object Practice {
                 results.add("Current Thread in withContext(io) is ${Thread.currentThread().name}")
                 withContext(Dispatchers.Main) {
                     results.forEach {
-                        text1.append(it)
-                        text1.append("\n\n")
+                        text1.appendAndLog(it)
+                        text1.appendAndLog("\n\n")
                     }
                 }
                 val users = Utils.getUsers()
                 withContext(Dispatchers.Main) {
-                    text1.append(users)
-                    text1.append("\n\n")
+                    text1.appendAndLog(users)
+                    text1.appendAndLog("\n\n")
                 }
                 val posts = Utils.getPosts()
                 withContext(Dispatchers.Main) {
-                    text1.append(posts)
-                    text1.append("\n\n")
+                    text1.appendAndLog(posts)
+                    text1.appendAndLog("\n\n")
                 }
                 val todos = Utils.getTodos()
                 withContext(Dispatchers.Main) {
-                    text1.append(todos)
-                    text1.append("\n\n")
+                    text1.appendAndLog(todos)
+                    text1.appendAndLog("\n\n")
                 }
             }
-            text1.append("Current Thread after withContext(io) is ${Thread.currentThread().name}" +
+            text1.appendAndLog("Current Thread after withContext(io) is ${Thread.currentThread().name}" +
                     "\n Totaltime=${(Date().time-startTime)}")
-            text1.append("\n\n")
+            text1.appendAndLog("\n\n")
 
         }
     }
@@ -85,8 +86,8 @@ object Practice {
             }
             results.add("Current Thread after withContext(io) is ${Thread.currentThread().name}\n Totaltime=${(Date().time - startTime)}")
             results.forEach {
-                text1.append(it)
-                text1.append("\n\n")
+                text1.appendAndLog(it)
+                text1.appendAndLog("\n\n")
             }
         }
     }
